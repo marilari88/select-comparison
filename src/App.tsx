@@ -1,7 +1,7 @@
 import * as Ariakit from "@ariakit/react";
 import * as ReactAria from "react-aria-components";
 import React, { ComponentPropsWithoutRef } from "react";
-import { footballPlayer } from "./data";
+import { comuni } from "./data";
 
 function SelectItem(
   props: ComponentPropsWithoutRef<typeof Ariakit.SelectItem>,
@@ -13,7 +13,7 @@ function SelectAriaKit() {
   return (
     <Ariakit.SelectProvider>
       <Ariakit.SelectLabel className="label">
-        Football Player
+        Italian cities
       </Ariakit.SelectLabel>
       <Ariakit.Select className="flex gap-2 items-center py-2 px-3 rounded-md bg-violet-800 text-neutral-50" />
       <Ariakit.SelectPopover
@@ -21,7 +21,7 @@ function SelectAriaKit() {
         sameWidth
         className="p-1 bg-neutral-50 border-neutral-300 border-1 outline-none flex flex-col max-h-96 overflow-auto"
       >
-        {footballPlayer.map((item) => (
+        {comuni.map((item) => (
           <SelectItem key={item} value={item}>
             {item}
           </SelectItem>
@@ -34,7 +34,7 @@ function SelectAriaKit() {
 function SelectReactAria() {
   return (
     <ReactAria.Select defaultSelectedKey={"Baggio"}>
-      <ReactAria.Label>football Player</ReactAria.Label>
+      <ReactAria.Label>Italian cities</ReactAria.Label>
       <ReactAria.Button className="flex gap-2 items-center py-2 px-3 rounded-md bg-violet-800 text-neutral-50">
         <ReactAria.SelectValue />
         <span aria-hidden="true">▼</span>
@@ -44,7 +44,7 @@ function SelectReactAria() {
         flex flex-col max-h-96 overflow-auto"
       >
         <ReactAria.ListBox className="p-1 bg-neutral-50 border-neutral-300 border-1 outline-none flex flex-col max-h-96 overflow-auto">
-          {footballPlayer.map((item) => (
+          {comuni.map((item) => (
             <ReactAria.ListBoxItem key={item}>{item}</ReactAria.ListBoxItem>
           ))}
         </ReactAria.ListBox>
@@ -59,8 +59,10 @@ function App() {
 
   return (
     <div className="grid grid-cols-2">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col items-center gap-4 p-4">
+        <h1 className="text-2xl font-bold">AriaKit</h1>
         <button
+          className="bg-violet-800 text-neutral-50 rounded-md p-2"
           onClick={() => {
             setIsOpenAriaKit((a) => !a);
           }}
@@ -74,8 +76,10 @@ function App() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col items-center gap-4 p-4">
+        <h1 className="text-2xl font-bold">React Aria Component</h1>
         <button
+          className="bg-violet-800 text-neutral-50 rounded-md p-2"
           onClick={() => {
             setIsOpenReactAria((a) => !a);
           }}
